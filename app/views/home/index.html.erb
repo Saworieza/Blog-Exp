@@ -1,0 +1,16 @@
+<h1>Home#index</h1>
+<p>You signed in as <%= current_user.email %></p>
+<a href="<% destroy_user_session_path%>"> </a>
+	<%= link_to('logout',destroy_user_session_path, method: :delete)%> 
+
+<h2>Upload Your Profile pic</h2>
+<%= form_for (current_user, html: {multipart:true}) do |f| %>
+	<% f.file_field :profile_pic %>
+	<%= f.submit %>
+<% end %>
+
+#hopelessly lost from here hence4th
+def user_params
+#//<%= image_tag current_user.profile_pic.url(thumbnail) %>
+	params [:user].permit (:profile_pic)
+end
